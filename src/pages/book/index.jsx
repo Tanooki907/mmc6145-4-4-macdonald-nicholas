@@ -18,6 +18,7 @@ export default function Book() {
     book = bookSearchResults.find(book => book.id === bookId)
   if (!book) return <Navigate to='/favorites' />
   console.log(favoriteBooks)
+  console.log(bookSearchResults)
 
   return (
     <main>

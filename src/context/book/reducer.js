@@ -13,7 +13,7 @@ export default function reducer(prevState, {action, payload}) {
       return saveToLocalStorage(favoriteBooks.filter(favBook => favBook !== payload))
     case SEARCH_BOOKS:
       console.log(payload)
-      return [payload]
+      return {...prevState, bookSearchResults: payload}
     default:
       return prevState
   }

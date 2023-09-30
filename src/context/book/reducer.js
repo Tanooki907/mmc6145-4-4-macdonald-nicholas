@@ -8,7 +8,7 @@ import {
 export default function reducer(prevState, {action, payload}) {
   switch(action) {
     case ADD_BOOK:
-      return saveToLocalStorage(...favoriteBooks, payload)
+      return {...prevState, favoriteBooks: [...favoriteBooks, payload]}
     case REMOVE_BOOK:
       return saveToLocalStorage(favoriteBooks.filter(favBook => favBook !== payload))
     case SEARCH_BOOKS:

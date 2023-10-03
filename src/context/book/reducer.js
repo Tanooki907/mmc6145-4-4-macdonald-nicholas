@@ -1,5 +1,4 @@
 // TODO: import actions and implement reducer for each action
-import initialState from './state'
 
 import {
   ADD_BOOK,
@@ -7,17 +6,26 @@ import {
   SEARCH_BOOKS
 } from './actions'
 
-export default function reducer(prevState, {action, payload}) {
-  switch(action) {
+export default function reducer(prevState, { action, payload }) {
+  switch (action) {
     case ADD_BOOK:
-      return {...prevState, favoriteBooks: [...initialState.favoriteBooks, payload]}
-    case REMOVE_BOOK:
-      return saveToLocalStorage(initialState.favoriteBooks.filter(favBook => favBook !== payload))
+      const updatedFavoriteBooksAdd = [...prevState.favoriteBooks, payload];
+      saveToLocalStorage(updatedFavoriteBooksAdd);
+      return { ...prevState, favoriteBooks: updatedFavoriteBooksAdd };
+
+      case REMOVE_BOOK:
+        const updatedFavoriteBooksRemove = prevState.favoriteBooks.filter(
+          (favBook) => favBook !== payload
+        );
+        saveToLocalStorage(updatedFavoriteBooksRemove);
+        return { ...prevState, favoriteBooks: updatedFavoriteBooksRemove };
+
     case SEARCH_BOOKS:
-      console.log(payload)
-      return {...prevState, bookSearchResults: payload}
+      console.log(payload);
+      return { ...prevState, bookSearchResults: payload };
+
     default:
-      return prevState
+      return prevState;
   }
 }
 

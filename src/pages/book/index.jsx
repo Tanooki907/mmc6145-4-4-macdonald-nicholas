@@ -10,6 +10,7 @@ export default function Book() {
   // TODO: Use dispatch appropriately to add/remove books
   const [{bookSearchResults, favoriteBooks}, dispatch] = useBookContext()
 
+  console.log(bookSearchResults)
   let isFavoriteBook = false
   let book = favoriteBooks.find(book => book.id === bookId)
   if (book)
@@ -18,7 +19,6 @@ export default function Book() {
     book = bookSearchResults.find(book => book.id === bookId)
   if (!book) return <Navigate to='/favorites' />
   console.log(favoriteBooks)
-  console.log(bookSearchResults)
 
   return (
     <main>

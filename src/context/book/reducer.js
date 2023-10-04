@@ -15,7 +15,7 @@ export default function reducer(prevState, { action, payload }) {
 
       case REMOVE_BOOK:
         const updatedFavoriteBooksRemove = prevState.favoriteBooks.filter(
-          (favBook) => favBook !== payload
+          (favBook) => favBook.id !== payload
         );
         saveToLocalStorage(updatedFavoriteBooksRemove);
         return { ...prevState, favoriteBooks: updatedFavoriteBooksRemove };

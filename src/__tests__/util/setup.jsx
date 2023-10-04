@@ -1,5 +1,4 @@
 import { afterEach, afterAll, beforeAll, vi } from 'vitest'
-import fetch from 'cross-fetch'
 import { MemoryRouter } from 'react-router-dom'
 import { render, cleanup, configure } from '@testing-library/react'
 import '@testing-library/jest-dom'
@@ -10,8 +9,6 @@ vi.stubGlobal('localStorage', {
   getItem: vi.fn(),
   setItem: vi.fn()
 })
-
-vi.stubGlobal('fetch', fetch)
 
 configure({
   getElementError: (message, container) => {
